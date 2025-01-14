@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datadog-config
+  namespace: default
+data:
+  datadog.yaml: |
+    logs_enabled: true
+    apm_config:
+      enabled: true
+    logs_config:
+      container_collect_all: true
+    tags:
+      - env:production
+      - service:flowise 
