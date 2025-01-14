@@ -1,9 +1,7 @@
-# Configuração do provider AWS
 provider "aws" {
   region = var.aws_region
 }
 
-# Módulo VPC
 module "vpc" {
   source = "./modules/vpc"
   
@@ -12,7 +10,6 @@ module "vpc" {
   azs           = var.availability_zones
 }
 
-# Módulo RDS
 module "rds" {
   source = "./modules/rds"
   
@@ -24,7 +21,6 @@ module "rds" {
   eks_security_group_id = module.eks.cluster_security_group_id
 }
 
-# Módulo EKS
 module "eks" {
   source = "./modules/eks"
   
@@ -34,7 +30,6 @@ module "eks" {
   environment   = var.environment
 }
 
-# Módulo S3
 module "s3" {
   source = "./modules/s3"
   
@@ -43,7 +38,6 @@ module "s3" {
   eks_role_id   = module.eks.cluster_role_id
 }
 
-# Módulo WAF
 module "waf" {
   source = "./modules/waf"
   

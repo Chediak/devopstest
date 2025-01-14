@@ -1,4 +1,3 @@
-# IAM Role para o cluster EKS
 resource "aws_iam_role" "eks_cluster" {
   name = "${var.cluster_name}-cluster-role"
 
@@ -98,7 +97,6 @@ resource "aws_eks_node_group" "main" {
   ]
 }
 
-# Application Load Balancer
 resource "aws_lb" "main" {
   name               = "${var.cluster_name}-alb"
   internal           = false
@@ -111,7 +109,6 @@ resource "aws_lb" "main" {
   }
 }
 
-# Security Group para o ALB
 resource "aws_security_group" "alb" {
   name        = "${var.cluster_name}-alb-sg"
   description = "Security group for ALB"
@@ -139,7 +136,6 @@ resource "aws_security_group" "alb" {
   }
 }
 
-# Política de segurança para pods
 resource "aws_eks_pod_security_policy" "restricted" {
   metadata {
     name = "${var.cluster_name}-restricted"
@@ -147,6 +143,5 @@ resource "aws_eks_pod_security_policy" "restricted" {
   spec {
     privileged                 = false
     allow_privilege_escalation = false
-    # ... outras restrições ...
   }
 }

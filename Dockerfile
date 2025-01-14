@@ -8,4 +8,4 @@ RUN mkdir -p /root/.flowise
 
 EXPOSE 3000
 
-CMD ["flowise", "start"] 
+CMD ["flowise", "start"]

@@ -55,7 +55,7 @@ jobs:
   backup:
     runs-on: ubuntu-latest
     schedule:
-      - cron: '0 2 * * *'  # Executa às 2h UTC diariamente
+      - cron: '0 2 * * *'
     steps:
       - uses: actions/checkout@v2
       
